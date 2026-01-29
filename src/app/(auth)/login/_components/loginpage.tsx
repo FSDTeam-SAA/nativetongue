@@ -161,6 +161,7 @@ export default function LoginPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Checkbox
+                className="border-white border"
                   id="remember"
                   onCheckedChange={(v) =>
                     setValue("rememberMe", Boolean(v))

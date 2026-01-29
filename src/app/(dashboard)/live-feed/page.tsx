@@ -1,9 +1,12 @@
 import { ChartSpline, Plus } from "lucide-react";
 import React from "react";
 import LiveFeed from "./_components/live-feed";
+import Header from "../_components/header";
 
 const page = () => {
   return (
+    <div>
+    <Header/>
     <div className="space-y-10">
       <div className="flex justify-between items-center">
         <h1 className="flex items-center font-bold gap-2 text-xl">
@@ -25,6 +28,7 @@ const page = () => {
       <div>
         <LiveFeed />
       </div>
+    </div>
     </div>
   );
 };

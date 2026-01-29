@@ -1,6 +1,7 @@
 import React from 'react';
 import { Edit3, Bell, Check, X } from 'lucide-react';
 import Image from 'next/image';
+import Header from '../_components/header';
 
 const posts = [
   {
@@ -40,6 +41,8 @@ const posts = [
 
 const UserProfile = () => {
   return (
+    <div>
+    <Header/>
     <div className="min-h-screen bg-[#0d0d0d] text-white p-4 md:p-6 font-sans">
       <div className=" space-y-8">
 
@@ -108,9 +111,8 @@ const UserProfile = () => {
               <div
                 key={post.id}
                 style={{ backgroundColor: post.bg }}
-                className={`rounded-xl border p-4 md:p-6 relative transition-all hover:bg-[#222] ${
-                  post.status === 'win' ? 'border-[#10b981]/30' : 'border-[#ef4444]/30'
-                }`}
+                className={`rounded-xl border p-4 md:p-6 relative transition-all hover:bg-[#222] ${post.status === 'win' ? 'border-[#10b981]/30' : 'border-[#ef4444]/30'
+                  }`}
               >
                 {/* Status Icon */}
                 <div className="absolute top-4 md:top-6 right-4 md:right-6">
@@ -142,6 +144,7 @@ const UserProfile = () => {
 
         </section>
       </div>
+    </div>
     </div>
   );
 };
