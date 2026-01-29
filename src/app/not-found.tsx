@@ -39,6 +39,7 @@ const NotFound = () => {
           Let&apos;s get you back in the game.
         </p>
 
+
         {/* Buttons */}
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
 
