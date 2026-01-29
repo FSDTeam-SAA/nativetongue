@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import CreateNewPassword from './_components/confirmpassword'
 
 const page = () => {
   return (
-    <div>
-        <CreateNewPassword/>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <CreateNewPassword />
+    </Suspense>
   )
 }
 
