@@ -3,7 +3,7 @@ import { Search, Bell, Wallet } from 'lucide-react';
 
 const Header = () => {
   return (
-    <header className="w-full mb-4 bg-[#0A0A0ACC] border-b border-[#FFFFFF0D] px-4 py-3 flex items-center justify-between">
+    <header className="w-full mb-4 bg-[#0A0A0ACC] border-b border-[#FFFFFF0D] py-3 flex items-center justify-between">
       {/* Search Bar - Left Side */}
       <div className="relative w-full max-w-sm">
         <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">

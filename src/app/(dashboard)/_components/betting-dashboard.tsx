@@ -22,7 +22,7 @@ const stats = [
 
 const BettingDashboard = () => {
     return (
-        <div className="bg-[#0d0d0d] text-white p-4 md:p-2 font-sans space-y-12">
+        <div className="bg-[#0d0d0d] text-white  font-sans space-y-12">
 
             {/* SECTION 1: TRENDING & METRICS (image_2555fa.png) */}
             <section className=" space-y-6">

@@ -17,7 +17,7 @@ const Leaderboard = () => {
   return (
     <div>
       <Header />
-      <div className="min-h-screen bg-[#0f0f0f] text-white p-4 md:p-8 font-sans">
+      <div className="min-h-screen bg-[#0f0f0f] text-white  font-sans">
 
         {/* Header */}
         <header className="mb-8">

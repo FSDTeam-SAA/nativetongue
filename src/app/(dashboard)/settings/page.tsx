@@ -43,7 +43,7 @@ const UserProfile = () => {
   return (
     <div>
     <Header/>
-    <div className="min-h-screen bg-[#0d0d0d] text-white p-4 md:p-6 font-sans">
+    <div className="min-h-screen bg-[#0d0d0d] text-white  font-sans">
       <div className=" space-y-8">
 
         {/* Header Section */}
