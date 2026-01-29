@@ -22,36 +22,36 @@ const SidebarSection = () => {
 
                 <div className="space-y-4">
                     {[{ img: '/football.jpg', amount: '$12,450', winner: 'Alex M.', legs: '12-Leg Parlay', profit: '+2400' },
-                      { img: '/football1.jpg', amount: '$8,200', winner: 'Jordan K.', legs: 'Super Bowl Prop', profit: '+1800' }]
+                    { img: '/football1.jpg', amount: '$8,200', winner: 'Jordan K.', legs: 'Super Bowl Prop', profit: '+1800' }]
                         .map((win, idx) => (
-                        <div
-                            key={idx}
-                            className="relative h-40 sm:h-48 rounded-3xl overflow-hidden group cursor-pointer border border-gray-800"
-                        >
-                            <Image
-                                width={800}
-                                height={600}
-                                src={win.img}
-                                alt="Stadium"
-                                className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 sm:p-6 flex flex-col justify-end">
-                                <div className="flex justify-between items-end">
-                                    <div className="space-y-1">
-                                        <div className="flex items-center gap-2">
-                                            <span className="bg-[#facc15]/20 text-[#facc15] text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded">{win.profit}</span>
-                                            <p className="text-[9px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wide">{win.legs}</p>
+                            <div
+                                key={idx}
+                                className="relative h-40 sm:h-48 rounded-3xl overflow-hidden group cursor-pointer border border-gray-800"
+                            >
+                                <Image
+                                    width={800}
+                                    height={600}
+                                    src={win.img}
+                                    alt="Stadium"
+                                    className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 sm:p-6 flex flex-col justify-end">
+                                    <div className="flex justify-between items-end">
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-2">
+                                                <span className="bg-[#facc15]/20 text-[#facc15] text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded">{win.profit}</span>
+                                                <p className="text-[9px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wide">{win.legs}</p>
+                                            </div>
+                                            <h3 className="text-2xl sm:text-3xl font-black text-white">{win.amount}</h3>
+                                            <p className="text-[10px] sm:text-[11px] text-gray-400 font-medium">Won by <span className="text-white">{win.winner}</span></p>
                                         </div>
-                                        <h3 className="text-2xl sm:text-3xl font-black text-white">{win.amount}</h3>
-                                        <p className="text-[10px] sm:text-[11px] text-gray-400 font-medium">Won by <span className="text-white">{win.winner}</span></p>
-                                    </div>
-                                    <div className="bg-white/10 p-2 rounded-full backdrop-blur-md group-hover:bg-[#10b981] transition-colors border border-white/10">
-                                        <ArrowUpRight size={20} className="text-white" />
+                                        <div className="bg-white/10 p-2 rounded-full backdrop-blur-md group-hover:bg-[#10b981] transition-colors border border-white/10">
+                                            <ArrowUpRight size={20} className="text-white" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
             </section>
 
