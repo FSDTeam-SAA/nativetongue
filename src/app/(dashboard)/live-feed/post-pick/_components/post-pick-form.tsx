@@ -106,26 +106,6 @@ export default function PostPickForm() {
     <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          {/* Content (Main Text) */}
-          <FormField
-            control={form.control}
-            name="content"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-zinc-400">Content</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Describe your pick..."
-                    className="bg-[#0f0f0f] border-zinc-800 min-h-[120px] resize-none focus-visible:ring-emerald-500"
-                    {...field}
-                    disabled={isSubmitting}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
           {/* Tag Select (Enum) */}
           <FormField
             control={form.control}
@@ -187,6 +167,26 @@ export default function PostPickForm() {
                   <Input
                     placeholder="e.g., moneyline, spread, over/under"
                     className="bg-[#0f0f0f] border-zinc-800 h-12 focus-visible:ring-emerald-500"
+                    {...field}
+                    disabled={isSubmitting}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Content (Main Text) */}
+          <FormField
+            control={form.control}
+            name="content"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-zinc-400">Content</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Describe your pick..."
+                    className="bg-[#0f0f0f] border-zinc-800 min-h-[120px] resize-none focus-visible:ring-emerald-500"
                     {...field}
                     disabled={isSubmitting}
                   />
