@@ -1,5 +1,6 @@
 import { ChartSpline, Plus } from "lucide-react";
 import React from "react";
+import LiveFeed from "./_components/live-feed";
 
 const page = () => {
   return (
@@ -19,6 +20,10 @@ const page = () => {
 
           <span>New Pick</span>
         </button>
+      </div>
+
+      <div>
+        <LiveFeed />
       </div>
     </div>
   );
