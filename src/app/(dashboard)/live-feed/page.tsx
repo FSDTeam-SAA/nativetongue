@@ -1,6 +1,7 @@
 import { ChartSpline, Plus } from "lucide-react";
 import React from "react";
 import LiveFeed from "./_components/live-feed";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -13,13 +14,15 @@ const page = () => {
           <span>Live Feed</span>
         </h1>
 
-        <button className="flex items-center font-bold gap-2 bg-gradient-to-r from-[#329150] to-[#0d4728] hover:bg-gradient-to-r hover:from-[#0d4728] hover:to-[#329150] py-3 px-4 rounded-3xl">
-          <span>
-            <Plus></Plus>
-          </span>
+        <Link href={"/live-feed/post-pick"}>
+          <button className="flex items-center font-bold gap-2 bg-gradient-to-r from-[#329150] to-[#0d4728] hover:bg-gradient-to-r hover:from-[#0d4728] hover:to-[#329150] py-3 px-4 rounded-3xl">
+            <span>
+              <Plus></Plus>
+            </span>
 
-          <span>New Pick</span>
-        </button>
+            <span>New Pick</span>
+          </button>
+        </Link>
       </div>
 
       <div>
