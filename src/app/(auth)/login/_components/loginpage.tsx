@@ -161,7 +161,7 @@ export default function LoginPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Checkbox
-                className="border-white border"
+                  className="border-white border"
                   id="remember"
                   onCheckedChange={(v) =>
                     setValue("rememberMe", Boolean(v))
@@ -187,6 +187,12 @@ export default function LoginPage() {
               {isLoading ? "Logging in..." : "Log In"}
             </Button>
           </form>
+          <div className="text-center text-sm mt-2 text-gray-400">
+            Don&apos;t have an account?{" "}
+            <a href="/register" className="text-[#00A859] hover:underline">
+              Sign Up
+            </a>
+          </div>
         </CardContent>
       </Card>
     </div>
