@@ -4,10 +4,12 @@ import { AppSidebar } from "./_components/app-sidebar";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SidebarProvider>
+    <SidebarProvider >
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
+      <main className="w-full p-5">
+        <div className="lg:hidden">
+          <SidebarTrigger />
+        </div>
         {children}
       </main>
     </SidebarProvider>
