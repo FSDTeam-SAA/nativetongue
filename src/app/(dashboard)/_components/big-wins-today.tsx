@@ -11,7 +11,7 @@ const topBettorsData = [
 
 const SidebarSection = () => {
     return (
-        <div className="w-full max-w-full sm:max-w-[400px] bg-[#0d0d0d] text-white p-4 sm:p-6 font-sans space-y-10">
+        <div className="w-full max-w-full sm:max-w-[400px] bg-[#0d0d0d] text-white  font-sans space-y-10">
 
             {/* 1. Big Wins Today Section */}
             <section className="space-y-4">
