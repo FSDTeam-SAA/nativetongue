@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ClockCheck, Send, ThumbsUp } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import LiveFeedSkeleton from "./live-feed-skeleton";
+import { useSession } from "next-auth/react";
 
 interface User {
   _id: string;
@@ -35,7 +37,23 @@ interface ApiResponse {
   data: Post[];
 }
 
+interface CommentPayload {
+  post: string;
+  content: string;
+}
+
 const LiveFeed = () => {
+  const queryClient = useQueryClient();
+  const [commentInputs, setCommentInputs] = useState<{ [key: string]: string }>(
+    {},
+  );
+  const session = useSession();
+  const token = (session.data as any)?.user?.accessToken as string;
+
+  console.log("session: ", session)
+
+  console.log("token: ", token)
+
   const { data, isLoading } = useQuery<ApiResponse>({
     queryKey: ["posts"],
     queryFn: async () => {
@@ -46,12 +64,67 @@ const LiveFeed = () => {
     refetchInterval: 30000,
   });
 
+  const addCommentMutation = useMutation({
+    mutationFn: async (commentData: CommentPayload) => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/comments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(commentData),
+        },
+      );
+      const data = await res.json();
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      setCommentInputs({});
+    },
+    onError: (error) => {
+      console.error("Error adding comment:", error);
+      alert("Failed to add comment. Please try again.");
+    },
+  });
+
   const formatTimeAgo = (dateString: string) => {
     try {
       return formatDistanceToNow(new Date(dateString), { addSuffix: true });
     } catch (error) {
       console.log("error", error);
       return "Some time ago";
+    }
+  };
+
+  const handleCommentSubmit = (postId: string) => {
+    const content = commentInputs[postId]?.trim();
+    if (!content) return;
+
+    const commentData: CommentPayload = {
+      post: postId,
+      content: content,
+    };
+
+    addCommentMutation.mutate(commentData);
+  };
+
+  const handleInputChange = (postId: string, value: string) => {
+    setCommentInputs((prev) => ({
+      ...prev,
+      [postId]: value,
+    }));
+  };
+
+  const handleKeyPress = (
+    postId: string,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleCommentSubmit(postId);
     }
   };
 
@@ -134,10 +207,24 @@ const LiveFeed = () => {
             <input
               type="text"
               placeholder="Write a comment..."
-              className="flex-1 bg-black/85 text-white rounded-xl px-4 py-3 text-sm focus:outline-none border border-gray-600 focus:border-blue-500 transition-colors"
+              value={commentInputs[post._id] || ""}
+              onChange={(e) => handleInputChange(post._id, e.target.value)}
+              onKeyPress={(e) => handleKeyPress(post._id, e)}
+              disabled={addCommentMutation.isPending}
+              className="flex-1 bg-black/85 text-white rounded-xl px-4 py-3 text-sm focus:outline-none border border-gray-600 focus:border-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             />
-            <button className="bg-gray-800 hover:bg-gray-700 text-blue-400 rounded-xl px-4 py-3 transition-colors">
-              <Send size={20} />
+            <button
+              onClick={() => handleCommentSubmit(post._id)}
+              disabled={
+                !commentInputs[post._id]?.trim() || addCommentMutation.isPending
+              }
+              className="bg-gray-800 hover:bg-gray-700 text-blue-400 rounded-xl px-4 py-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-800"
+            >
+              {addCommentMutation.isPending ? (
+                <div className="h-5 w-5 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+              ) : (
+                <Send size={20} />
+              )}
             </button>
           </div>
         </div>
