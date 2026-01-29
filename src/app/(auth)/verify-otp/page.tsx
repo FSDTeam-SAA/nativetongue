@@ -1,12 +1,10 @@
-import React from 'react'
-import VerifyAccount from './_components/verify-otp'
+import React, { Suspense } from "react";
+import VerifyAccount from "./_components/verify-otp";
 
-const page = () => {
+export default function Page() {
   return (
-    <div>
-        <VerifyAccount/>
-    </div>
-  )
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyAccount />
+    </Suspense>
+  );
 }
-
-export default page
