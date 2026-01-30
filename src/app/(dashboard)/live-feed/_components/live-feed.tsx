@@ -153,7 +153,6 @@ const LiveFeed = () => {
       return post.comments;
     }
 
-    // প্রথম ২টি কমেন্ট দেখাবে
     return post.comments.slice(0, 2);
   };
 
@@ -223,7 +222,7 @@ const LiveFeed = () => {
 
               <div className="px-3 py-1.5 border border-gray-700 rounded-3xl text-sm">
                 <span className="opacity-80"> Conf:</span>{" "}
-                <span className="text-white capitalize">{post.confidence}</span>
+                <span className="text-white capitalize">{post.confidence}/10</span>
               </div>
             </div>
 
